@@ -1,0 +1,61 @@
+body {
+  margin: 0;
+  font-family: Arial;
+  background: #0f172a;
+}
+
+.layout {
+  display: flex;
+}
+
+.sidebar {
+  width: 220px;
+  background: #1e293b;
+  color: white;
+  height: 100vh;
+  padding: 20px;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar li {
+  margin: 15px 0;
+}
+
+.dashboard {
+  flex: 1;
+}
+
+.topbar {
+  background: #111827;
+  color: white;
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.content {
+  display: flex;
+  height: calc(100vh - 60px);
+}
+
+.map {
+  flex: 3;
+}
+
+.rightpanel {
+  flex: 1;
+  background: #0f172a;
+  padding: 10px;
+}
+
+.card {
+  background: #1e293b;
+  color: white;
+  padding: 15px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+}
