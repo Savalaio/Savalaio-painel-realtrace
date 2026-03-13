@@ -1,5 +1,5 @@
-import Sidebar from "./src/components/Sidebar";
-import Dashboard from "./src/pages/Dashboard";
+import Sidebar from "./components/Sidebar.jsx";
+import Dashboard from "./pages/Dashboard.jsx";
 
 export default function App() {
   return (
