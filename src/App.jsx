@@ -1,12 +1,27 @@
+import { useEffect } from "react";
+import L from "leaflet";
+import "leaflet/dist/leaflet.css";
+
 export default function App() {
+
+  useEffect(() => {
+
+    const map = L.map("map").setView([-1.4558, -48.4902], 12);
+
+    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+      attribution: "© OpenStreetMap"
+    }).addTo(map);
+
+    L.marker([-1.4558, -48.4902])
+      .addTo(map)
+      .bindPopup("Veículo 001")
+      .openPopup();
+
+  }, []);
+
   return (
-    <div style={{
-      color: "white",
-      fontSize: "40px",
-      padding: "100px",
-      background: "black"
-    }}>
-      PAINEL GPS FUNCIONANDO 🚀
+    <div style={{height:"100vh"}}>
+      <div id="map" style={{height:"100%"}}></div>
     </div>
   );
 }
