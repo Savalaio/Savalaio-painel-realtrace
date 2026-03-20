@@ -1,4 +1,4 @@
-const API_BASE = "https://gps.rastriando.com.br/api";
+const API_BASE = "/api";
 
 let sessionCookie = null;
 

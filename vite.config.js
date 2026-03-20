@@ -3,5 +3,14 @@ import react from '@vitejs/plugin-react'
 
 export default defineConfig({
   plugins: [react()],
-  base: "./"
+  base: "./",
+  server: {
+    proxy: {
+      "/api": {
+        target: "https://gps.rastriando.com.br",
+        changeOrigin: true,
+        secure: true,
+      },
+    },
+  },
 })
