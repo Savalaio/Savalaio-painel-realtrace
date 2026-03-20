@@ -1,28 +1,35 @@
 export default function Sidebar() {
-  return (
-    <div
-      style={{
-        width: "220px",
-        background: "#1e293b",
-        color: "white",
-        height: "100vh",
-        padding: "20px",
-        boxSizing: "border-box",
-      }}
-    >
-      <h2 style={{ marginBottom: "20px" }}>REAL TRACE</h2>
+  const menuItems = [
+    { label: "Dashboard", icon: "📊" },
+    { label: "Map View", icon: "🗺️", active: true },
+    { label: "Vehicles", icon: "🚛" },
+    { label: "Geofences", icon: "📍", badge: 3 },
+    { label: "Alerts", icon: "🔔" },
+    { label: "Reports", icon: "📄" },
+    { label: "Users", icon: "👥" },
+    { label: "Admin", icon: "⚙️" },
+    { label: "Settings", icon: "🔧" },
+  ];
 
-      <ul style={{ listStyle: "none", padding: 0 }}>
-        <li style={{ marginBottom: "10px" }}>Dashboard</li>
-        <li style={{ marginBottom: "10px" }}>Map View</li>
-        <li style={{ marginBottom: "10px" }}>Vehicles</li>
-        <li style={{ marginBottom: "10px" }}>Geofences</li>
-        <li style={{ marginBottom: "10px" }}>Alerts</li>
-        <li style={{ marginBottom: "10px" }}>Reports</li>
-        <li style={{ marginBottom: "10px" }}>Users</li>
-        <li style={{ marginBottom: "10px" }}>Admin</li>
-        <li style={{ marginBottom: "10px" }}>Settings</li>
-      </ul>
+  return (
+    <div className="sidebar">
+      <div className="sidebar-logo">
+        <span className="logo-icon">📡</span>
+        <span className="logo-text">REAL <span className="logo-highlight">TRACE</span></span>
+      </div>
+
+      <nav className="sidebar-nav">
+        {menuItems.map((item) => (
+          <div
+            key={item.label}
+            className={`sidebar-item${item.active ? " sidebar-item-active" : ""}`}
+          >
+            <span className="sidebar-icon">{item.icon}</span>
+            <span className="sidebar-label">{item.label}</span>
+            {item.badge && <span className="sidebar-badge">{item.badge}</span>}
+          </div>
+        ))}
+      </nav>
     </div>
   );
 }
