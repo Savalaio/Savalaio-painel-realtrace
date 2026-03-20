@@ -337,6 +337,54 @@ body {
   background: #047857;
 }
 
+.popup-cmd-error {
+  font-size: 11px;
+  color: #ef4444;
+  margin-top: 6px;
+  font-weight: 600;
+}
+
+.popup-cmd-success {
+  font-size: 11px;
+  color: #059669;
+  margin-top: 6px;
+  font-weight: 600;
+}
+
+.vehicle-marker-offline {
+  opacity: 0.5;
+}
+
+.map-info-bar {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 1000;
+  display: flex;
+  gap: 12px;
+  background: rgba(15, 23, 42, 0.9);
+  padding: 8px 14px;
+  border-radius: 8px;
+  border: 1px solid #334155;
+}
+
+.map-info-item {
+  font-size: 12px;
+  color: #94a3b8;
+}
+
+.map-info-item strong {
+  color: #e2e8f0;
+}
+
+.info-online strong {
+  color: #22d3ee;
+}
+
+.info-offline strong {
+  color: #ef4444;
+}
+
 .map-labels {
   position: absolute;
   top: 0;
