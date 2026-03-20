@@ -86,7 +86,7 @@ export default function MapView() {
                       {v.status}
                     </span>
                   </div>
-                  <p className="popup-driver">Date: {v.driver}</p>
+                  <p className="popup-driver">Driver: {v.driver}</p>
                   <span className="popup-movement">{v.movement}</span>
                 </div>
               </div>
