@@ -279,6 +279,64 @@ body {
   color: #22d3ee;
 }
 
+.popup-blocked-badge {
+  display: inline-block;
+  background: #dc2626;
+  color: white;
+  font-size: 10px;
+  padding: 2px 8px;
+  border-radius: 4px;
+  margin-left: 8px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.popup-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+  padding-top: 8px;
+  border-top: 1px solid #e2e8f0;
+}
+
+.popup-btn {
+  flex: 1;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, opacity 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+}
+
+.popup-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.btn-block {
+  background: #dc2626;
+  color: white;
+}
+
+.btn-block:hover:not(:disabled) {
+  background: #b91c1c;
+}
+
+.btn-unblock {
+  background: #059669;
+  color: white;
+}
+
+.btn-unblock:hover:not(:disabled) {
+  background: #047857;
+}
+
 .map-labels {
   position: absolute;
   top: 0;

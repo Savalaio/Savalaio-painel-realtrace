@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
@@ -58,6 +59,16 @@ const vehicles = [
 ];
 
 export default function MapView() {
+  const [blockedVehicles, setBlockedVehicles] = useState({});
+
+  function handleBlock(vehicleId) {
+    setBlockedVehicles((prev) => ({ ...prev, [vehicleId]: true }));
+  }
+
+  function handleUnblock(vehicleId) {
+    setBlockedVehicles((prev) => ({ ...prev, [vehicleId]: false }));
+  }
+
   return (
     <div className="map-container">
       <MapContainer
@@ -71,28 +82,48 @@ export default function MapView() {
           attribution="OpenStreetMap"
         />
 
-        {vehicles.map((v) => (
-          <Marker key={v.id} position={v.position} icon={vehicleIcon}>
-            <Popup>
-              <div className="vehicle-popup">
-                <div className="popup-header">
-                  <strong>{v.id}</strong>
-                </div>
-                <div className="popup-body">
-                  <p className="popup-location">Location: {v.location}</p>
-                  <div className="popup-stats">
-                    <span className="popup-speed">{v.speed}</span>
-                    <span className={`popup-status ${v.status === "Ligado" ? "status-on" : "status-off"}`}>
-                      {v.status}
-                    </span>
+        {vehicles.map((v) => {
+          const isBlocked = blockedVehicles[v.id] || false;
+          return (
+            <Marker key={v.id} position={v.position} icon={vehicleIcon}>
+              <Popup>
+                <div className="vehicle-popup">
+                  <div className="popup-header">
+                    <strong>{v.id}</strong>
+                    {isBlocked && <span className="popup-blocked-badge">BLOQUEADO</span>}
                   </div>
-                  <p className="popup-driver">Driver: {v.driver}</p>
-                  <span className="popup-movement">{v.movement}</span>
+                  <div className="popup-body">
+                    <p className="popup-location">Location: {v.location}</p>
+                    <div className="popup-stats">
+                      <span className="popup-speed">{v.speed}</span>
+                      <span className={`popup-status ${v.status === "Ligado" ? "status-on" : "status-off"}`}>
+                        {v.status}
+                      </span>
+                    </div>
+                    <p className="popup-driver">Driver: {v.driver}</p>
+                    <span className="popup-movement">{v.movement}</span>
+                    <div className="popup-actions">
+                      <button
+                        className="popup-btn btn-block"
+                        onClick={() => handleBlock(v.id)}
+                        disabled={isBlocked}
+                      >
+                        🔒 Bloquear
+                      </button>
+                      <button
+                        className="popup-btn btn-unblock"
+                        onClick={() => handleUnblock(v.id)}
+                        disabled={!isBlocked}
+                      >
+                        🔓 Desbloquear
+                      </button>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </Popup>
-          </Marker>
-        ))}
+              </Popup>
+            </Marker>
+          );
+        })}
       </MapContainer>
 
       <div className="map-labels">
